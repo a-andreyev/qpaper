@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>DummyModel.qml</file>
+        <file>DummyDelegate.qml</file>
+        <file>DummyListView.qml</file>
+    </qresource>
+</RCC>
