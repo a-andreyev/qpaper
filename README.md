@@ -51,7 +51,7 @@ Two main components:
 
 Data gateway is a system daemon used for crawling the data from the sources and save it to data storage.
 
-Data gateway should provide several interfaces for client apps (to be researched what data exchange protocols should be used):
+Data gateway also should provide several interfaces for client apps (to be researched what data exchange protocols should be used):
 + [dbus](https://www.freedesktop.org/wiki/Software/dbus/) -- probably could fit for local data exchange
 + [WebSockets](http://tools.ietf.org/html/rfc6455) -- should fit for remote clients
 
@@ -68,6 +68,7 @@ Client app probably will be pure QML/JS application. It should be able to get th
 1. rdf support for qml as object
 1. first data model
 1. atom support module (saving data to datastore)
+1. first server interface
 1. first prototype (without filtering, only representing all crawled item via basic view)
 1. second prototype (details view)
 1. twitter support module (saving data to datastore)
