@@ -3,7 +3,7 @@ Qt-based semantic news aggregator
 
 ## Description
 
-It's kind of qt-based desktop version of [feedly](http://feedly.com/) or any other modern rss reader, but not only for rss. This application aims to provide unified access to personal news from different sources, such as:
+It's a qt-based desktop version of [feedly](http://feedly.com/) or any other modern rss-reader, but not only for rss protocol. This application aims to provide [unified](http://xkcd.com/927/) access to personal news from different sources, such as:
 + [rss](http://cyber.law.harvard.edu/rss/rss.html)/[atom](https://tools.ietf.org/html/rfc4287)
 + [twitter](https://dev.twitter.com/)
 + [reddit](http://reddit.com/.) (rss avaliable)
@@ -15,14 +15,15 @@ It's kind of qt-based desktop version of [feedly](http://feedly.com/) or any oth
 + [telegram channels](https://telegram.org/faq_channels)
 + [facebook](https://developers.facebook.com/)
 + ...
-
-In theory it should give you an option:
+ 
+In theory it should give you an option to:
 + read news with unified configurable representations
 + filter news not only by source, but also by any metadata (date, author, tag, attachement type, etc)
 
 Long-term ideas:
 + more data sources
 + different data visualizations
++ caching
 + feedback support (news comments, twitter replys)
 + configurable notifications (For example, only when some author has wrote something. Or more complex, like combination of conditions)
 + sync between different user devices
@@ -38,9 +39,29 @@ Long-term ideas:
 
 ## Technical details
 
-Qt5/QML based app.
+Qt5/QML based app. Main focus: usage with KDE desktop environment and (arch) linux.
 
 RDF is going to be used as datamodel format. [Dataquay](http://breakfastquay.com/dataquay/) is going to be used for data managing.
+
+### Architecture description
+
+Two main components:
+
+#### data gateway
+
+Data gateway is a system daemon used for crawling the data from the sources and save it to data storage.
+
+Data gateway should provide several interfaces for client apps (to be researched what data exchange protocols should be used):
++ [dbus](https://www.freedesktop.org/wiki/Software/dbus/) -- probably could fit for local data exchange
++ [WebSockets](http://tools.ietf.org/html/rfc6455) -- should fit for remote clients
+
+#### client
+
+Client app probably will be pure QML/JS application. It should be able to get the collection of asked resources via interface and receive data updates. It also should be able to receive avaliable server configuration.
+
+### Data model
+
+`TODO:` data model should be similar to [rss](http://lov.okfn.org/dataset/lov/vocabs/rss)
 
 ## Roadmap
 
